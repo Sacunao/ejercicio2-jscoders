@@ -23,12 +23,33 @@ Tal como está la función y la mandamos a inspeccionar encontramos la siguiente
 
 Donde se puede observar:
 
-1. El var declarado en la linea 5 hace que el interprete "Eleve" mi variable asi : (function () {
-var feature; // ----> la variable esta elevada if ( typeof feature === "undefined" ){
-feature = "callbacks";
-console.log("JS coders love its " + feature );//----> undefined
-} else {
-console.log("JS developers love its " + feature );
-} })();
+var feature = 'closures'; //window.feature = "clousure"
 
-al eliminar el var de la linea 5 ya el interprete ya no "Eleva" la variable es decir ya no es undefined asi imprimira el ELSE.
+(function () { //lee el valor de window first
+
+    var feature; // Por el hoisting el interprete lee la declaracion de la variable primero, pero al leerla solo declarada y sin valor asignado nos da como resultado undefined, ya que el valor (la función), no está siendo tomada en cuenta.
+    
+	if ( typeof feature === 'undefined' ){         
+		feature = 'callbacks';         
+        
+		console.log('JS coders love its ' + feature );     
+	} else {         
+		console.log('JS developers love its ' + feature );     
+	} 
+})();
+
+###Código de Resolución
+var feature = 'closures'; //window.feature = "clousure"
+
+(function () { //lee el valor de window first
+
+	if ( typeof feature === 'undefined' ){ 
+                //aqui lo lee como window.feature = "clousure"
+                
+		feature = 'callbacks';   // busca en el window si esta variable tiene algun valor y por eso la encuentra en el global. Se utiliza la teoria de Scope.
+        
+		console.log('JS coders love its ' + feature );     
+	} else {         
+		console.log('JS developers love its ' + feature );     
+	} 
+})();
