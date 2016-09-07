@@ -1,7 +1,5 @@
- 
-(function () {  
-	var feature = 'closures';
-	   
+var feature = 'closures'; 
+(function () {     
 	if ( typeof feature === 'undefined' ){         
 		feature = 'callbacks';         
 		console.log('JS coders love its ' + feature );     
