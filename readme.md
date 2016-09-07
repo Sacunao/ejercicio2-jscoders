@@ -23,4 +23,12 @@ Tal como está la función y la mandamos a inspeccionar encontramos la siguiente
 
 Donde se puede observar:
 
-1. A pesar que la variable var feature está declarada la cuenta como undefined y pasa a la condición else.
+1. El var declarado en la linea 5 hace que el interprete "Eleve" mi variable asi : (function () {
+var feature; // ----> la variable esta elevada if ( typeof feature === "undefined" ){
+feature = "callbacks";
+console.log("JS coders love its " + feature );//----> undefined
+} else {
+console.log("JS developers love its " + feature );
+} })();
+
+al eliminar el var de la linea 5 ya el interprete ya no "Eleva" la variable es decir ya no es undefined asi imprimira el ELSE.
